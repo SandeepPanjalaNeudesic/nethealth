@@ -14,17 +14,17 @@
       body {
         height: 100vh;
         margin: 0;
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
-        font-style: normal;
       }
       main {
         display: flex;
         height: 100%;
         background: #f7f7fa;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-style: normal;
       }
 
-      aside {
+      .aside {
         display: flex;
         padding: 48px 24px;
         flex-direction: column;
@@ -93,10 +93,16 @@
   </head>
   <body>
     <main>
-      <aside>
+      <div class="aside">
         <div class="logo-container">
-          <img src="nethealth-logo-white.svg" alt="NetHealth Logo" />
-          <img src="therapy-logo.png" alt="Therapy Logo" />
+          <img
+            src="https://github.com/SandeepPanjalaNeudesic/nethealth/blob/main/nethealth-logo-white.svg"
+            alt="NetHealth Logo"
+          />
+          <img
+            src="https://github.com/SandeepPanjalaNeudesic/nethealth/blob/main/therapy-logo.png"
+            alt="Therapy Logo"
+          />
         </div>
         <div class="links-container">
           <button size="medium" themeColor="light" fillMode="solid">
@@ -115,7 +121,7 @@
             CONTACT SALES
           </button>
         </div>
-      </aside>
+      </div>
       <div class="login-container">
         <div class="login-content">
           <h3>Log in to Therapy Tree</h3>
