@@ -93,7 +93,8 @@
       .heading,
       .intro,
       .divider,
-      .create {
+      .create,
+      #forgotPassword {
         display: none;
       }
 
@@ -129,7 +130,33 @@
           0px 2px 2px 0px rgba(0, 0, 0, 0.14),
           0px 1px 5px 0px rgba(0, 0, 0, 0.12);
       }
+
+      #forgot-password {
+        color: #3f51b5;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+      }
+
+      .entry-item label {
+        color: rgba(0, 0, 0, 0.87);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 28px;
+      }
     </style>
+    <script>
+      window.onload = function () {
+        const forgotPassword = document.getElementById("forgotPassword");
+        const forgotPasswordAppened =
+          document.getElementById("forgot-password");
+        forgotPasswordAppened.href = forgotPassword.href;
+      };
+    </script>
   </head>
   <body>
     <main>
@@ -166,6 +193,7 @@
         <div class="login-content">
           <h3>Log in to Therapy Tree</h3>
           <div id="api"></div>
+          <a id="forgot-password">Forgot your password?</a>
         </div>
       </div>
     </main>
