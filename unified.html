@@ -167,9 +167,19 @@
         display: none;
       }
 
+      /* input,
+      textarea {
+        -webkit-appearance: none;
+        border-radius: 0;
+      } */
+
+      input::placeholder {
+        overflow: visible;
+      }
+
       /* REMOVE THIS */
       .error.itemLevel {
-        display: nonez;
+        display: none;
       }
 
       .intro,
