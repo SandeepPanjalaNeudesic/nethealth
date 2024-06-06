@@ -195,29 +195,6 @@
         white-space: normal !important;
       }
     </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const targetNode = document.getElementsByClassName("working")[0];
-        const nextBtn = document.getElementById("next");
-
-        if (targetNode && nextBtn) {
-          const config = { attributes: true, attributeFilter: ["style"] };
-
-          const callback = (mutationList, observer) => {
-            if (targetNode.style.display == "block") {
-              nextBtn.classList.add("loader");
-              nextBtn.innerHTML = "Loading...";
-            } else {
-              nextBtn.classList.remove("loader");
-              nextBtn.innerHTML = "Sign In";
-            }
-          };
-
-          const observer = new MutationObserver(callback);
-          observer.observe(targetNode, config);
-        }
-      });
-    </script>
   </head>
   <body>
     <main>
@@ -278,9 +255,9 @@
       </div>
     </main>
 
-    <!-- <script
+    <script
       src="https://sandeeppanjalaneudesic.github.io/nethealth/script.js"
       defer
-    ></script> -->
+    ></script>
   </body>
 </html>
