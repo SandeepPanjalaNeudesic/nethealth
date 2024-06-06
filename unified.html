@@ -41,33 +41,33 @@
 
       .aside {
         display: flex;
-        padding: 3rem 1.5rem;
+        padding: 48px 24px;
         flex-direction: column;
         align-items: flex-start;
         align-self: stretch;
-        width: 20.3125rem;
+        width: 325px;
         background: linear-gradient(347deg, #e84d3f -0.62%, #ab0a40 100%);
       }
 
       .logo-container {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 12px;
       }
 
       .links-container {
         display: flex;
         align-items: flex-start;
         flex-direction: column;
-        gap: 1.5rem;
-        margin-top: 3rem;
+        gap: 24px;
+        margin-top: 48px;
       }
 
       .links-container button {
         display: flex;
-        padding: 0.5625rem 1.0625rem;
+        padding: 9px 17px;
         align-items: center;
-        gap: 0.5rem;
+        gap: 8px;
 
         box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
           0px 2px 2px 0px rgba(0, 0, 0, 0.14),
@@ -83,11 +83,11 @@
 
       .login-container .login-content {
         display: flex;
-        width: 29.6875rem;
-        padding: 1.5rem 1.25rem;
+        width: 475px;
+        padding: 24px 20px;
         flex-direction: column;
         align-items: center;
-        gap: 1.5rem;
+        gap: 24px;
         flex-shrink: 0;
         border-radius: 2px;
         border: 1px solid rgba(0, 0, 0, 0.12);
@@ -100,7 +100,7 @@
 
       .login-container .login-content h3 {
         margin: 0;
-        font-size: 1.75rem;
+        font-size: 28px;
         font-weight: 600;
         text-align: center;
       }
@@ -112,13 +112,13 @@
 
       input {
         width: 100%;
-        padding: 0.6875rem 1rem;
+        padding: 11px 16px;
         box-sizing: border-box;
-        margin-top: 0.5rem;
+        margin-top: 8px;
       }
 
       .entry-item {
-        margin-bottom: 1.5rem;
+        margin-bottom: 24px;
       }
 
       .buttons #next {
@@ -126,7 +126,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 0.5rem;
+        gap: 8px;
         text-transform: uppercase;
         background-color: #3f51b5;
 
@@ -138,29 +138,29 @@
         border: none;
         border-radius: 2px;
 
-        padding-block: 0.625rem;
-        padding-inline: 1rem;
-        font-size: 0.875rem;
+        padding-block: 10px;
+        padding-inline: 16px;
+        font-size: 14px;
         line-height: 1.4285714286;
       }
 
       #forgotPassword {
         color: #3f51b5;
         text-align: center;
-        font-size: 1rem;
+        font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        line-height: 1.5rem;
+        line-height: 24px;
         letter-spacing: 0.15px;
         text-decoration: none;
       }
 
       .entry-item label {
         color: rgba(0, 0, 0, 0.87);
-        font-size: 0.875rem;
+        font-size: 14px;
         font-style: normal;
         font-weight: 400;
-        margin-bottom: 0.3125rem;
+        margin-bottom: 5px;
       }
 
       .entry-item [aria-hidden="true"] {
@@ -195,7 +195,67 @@
         white-space: normal !important;
       }
     </style>
-    <script defer>
+  </head>
+  <body>
+    <main>
+      <div class="aside">
+        <div class="logo-container">
+          <img
+            src="https://sandeeppanjalaneudesic.github.io/nethealth/nethealth-logo-white.svg"
+            alt="NetHealth Logo"
+          />
+          <img
+            src="https://sandeeppanjalaneudesic.github.io/nethealth/therapy-logo.png"
+            alt="Therapy Logo"
+          />
+        </div>
+        <div class="links-container">
+          <button size="medium" themeColor="light" fillMode="solid">
+            HOW-TO SITE
+            <img
+              src="https://sandeeppanjalaneudesic.github.io/nethealth/link-out.svg"
+              alt="External Link"
+            />
+          </button>
+          <button size="medium" themeColor="light" fillMode="solid">
+            NET HEALTH SITE
+            <img
+              src="https://sandeeppanjalaneudesic.github.io/nethealth/link-out.svg"
+              alt="External Link"
+            />
+          </button>
+          <button size="medium" themeColor="light" fillMode="solid">
+            ONLINE ASSISTANCE
+            <img
+              src="https://sandeeppanjalaneudesic.github.io/nethealth/link-out.svg"
+              alt="External Link"
+            />
+          </button>
+          <button size="medium" themeColor="light" fillMode="solid">
+            <img
+              src="https://sandeeppanjalaneudesic.github.io/nethealth/email.svg"
+              alt="Email"
+            />
+            CONTACT SUPPORT
+          </button>
+          <button size="medium" themeColor="light" fillMode="solid">
+            <img
+              src="https://sandeeppanjalaneudesic.github.io/nethealth/email.svg"
+              alt="Email"
+            />
+            CONTACT SALES
+          </button>
+        </div>
+      </div>
+      <div class="login-container">
+        <div class="login-content">
+          <h3>Log in to Therapy Tree</h3>
+          <div id="api"></div>
+        </div>
+      </div>
+    </main>
+
+    <script async>
       const targetNode = document.getElementsByClassName("working")[0];
       // Sign in button in unified page.
       const nextBtn = document.getElementById("next");
@@ -223,64 +283,5 @@
         observer.observe(targetNode, config);
       }
     </script>
-  </head>
-  <body>
-    <main>
-      <div class="aside">
-        <div class="logo-container">
-          <img
-            src="https://lescorp4storage.blob.core.windows.net/web/nethealth-logo-white.svg"
-            alt="NetHealth Logo"
-          />
-          <img
-            src="https://lescorp4storage.blob.core.windows.net/web/therapy-logo.png"
-            alt="Therapy Logo"
-          />
-        </div>
-        <div class="links-container">
-          <button size="medium" themeColor="light" fillMode="solid">
-            HOW-TO SITE
-            <img
-              src="https://lescorp4storage.blob.core.windows.net/web/link-out.svg"
-              alt="External Link"
-            />
-          </button>
-          <button size="medium" themeColor="light" fillMode="solid">
-            NET HEALTH SITE
-            <img
-              src="https://lescorp4storage.blob.core.windows.net/web/link-out.svg"
-              alt="External Link"
-            />
-          </button>
-          <button size="medium" themeColor="light" fillMode="solid">
-            ONLINE ASSISTANCE
-            <img
-              src="https://lescorp4storage.blob.core.windows.net/web/link-out.svg"
-              alt="External Link"
-            />
-          </button>
-          <button size="medium" themeColor="light" fillMode="solid">
-            <img
-              src="https://lescorp4storage.blob.core.windows.net/web/email.svg"
-              alt="Email"
-            />
-            CONTACT SUPPORT
-          </button>
-          <button size="medium" themeColor="light" fillMode="solid">
-            <img
-              src="https://lescorp4storage.blob.core.windows.net/web/email.svg"
-              alt="Email"
-            />
-            CONTACT SALES
-          </button>
-        </div>
-      </div>
-      <div class="login-container">
-        <div class="login-content">
-          <h3>Log in to Therapy Tree</h3>
-          <div id="api"></div>
-        </div>
-      </div>
-    </main>
   </body>
 </html>
