@@ -41,33 +41,34 @@
 
       .aside {
         display: flex;
-        padding: 48px 24px;
+        padding: 3rem 1.5rem;
         flex-direction: column;
         align-items: flex-start;
         align-self: stretch;
-        width: 325px;
+        width: 20.3125rem;
         background: linear-gradient(347deg, #e84d3f -0.62%, #ab0a40 100%);
       }
 
       .logo-container {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 0.75rem;
       }
 
       .links-container {
         display: flex;
         align-items: flex-start;
         flex-direction: column;
-        gap: 24px;
-        margin-top: 48px;
+        gap: 1.5rem;
+        margin-top: 3rem;
       }
 
       .links-container button {
         display: flex;
-        padding: 9px 17px;
+        padding: 0.5625rem 1.0625rem;
         align-items: center;
-        gap: 8px;
+        font-weight: 500;
+        gap: 0.5rem;
 
         box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
           0px 2px 2px 0px rgba(0, 0, 0, 0.14),
@@ -83,11 +84,11 @@
 
       .login-container .login-content {
         display: flex;
-        width: 475px;
-        padding: 24px 20px;
+        width: 29.6875rem;
+        padding: 1.5rem 1.25rem;
         flex-direction: column;
         align-items: center;
-        gap: 24px;
+        gap: 1.5rem;
         flex-shrink: 0;
         border-radius: 2px;
         border: 1px solid rgba(0, 0, 0, 0.12);
@@ -100,7 +101,7 @@
 
       .login-container .login-content h3 {
         margin: 0;
-        font-size: 28px;
+        font-size: 1.75rem;
         font-weight: 600;
         text-align: center;
       }
@@ -112,13 +113,13 @@
 
       input {
         width: 100%;
-        padding: 11px 16px;
+        padding: 0.6875rem 1rem;
         box-sizing: border-box;
-        margin-top: 8px;
+        margin-top: 0.5rem;
       }
 
       .entry-item {
-        margin-bottom: 24px;
+        margin-bottom: 1.5rem;
       }
 
       .buttons #next {
@@ -126,7 +127,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 8px;
+        gap: 0.5rem;
         text-transform: uppercase;
         background-color: #3f51b5;
 
@@ -138,29 +139,29 @@
         border: none;
         border-radius: 2px;
 
-        padding-block: 10px;
-        padding-inline: 16px;
-        font-size: 14px;
+        padding-block: 0.625rem;
+        padding-inline: 1rem;
+        font-size: 0.875rem;
         line-height: 1.4285714286;
       }
 
       #forgotPassword {
         color: #3f51b5;
         text-align: center;
-        font-size: 16px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 400;
-        line-height: 24px;
+        line-height: 1.5rem;
         letter-spacing: 0.15px;
         text-decoration: none;
       }
 
       .entry-item label {
         color: rgba(0, 0, 0, 0.87);
-        font-size: 14px;
+        font-size: 0.875rem;
         font-style: normal;
         font-weight: 400;
-        margin-bottom: 5px;
+        margin-bottom: 0.3125rem;
       }
 
       .entry-item [aria-hidden="true"] {
@@ -179,7 +180,18 @@
       }
 
       .error {
-        color: #f64138;
+        color: #fff;
+        display: flex;
+        padding: 0.875rem 1rem;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 0.125rem;
+        background: #f31700;
+        margin-bottom: 1.5rem;
+      }
+
+      .error > p {
+        margin: 0;
       }
 
       #next.loader {
@@ -195,17 +207,83 @@
         white-space: normal !important;
       }
     </style>
+
+    <script>
+      // try to get element by id, if it does not exist repeat every 100ms
+      const interval = setInterval(() => {
+        // Sign in button in unified page.
+        const nextBtn = document.getElementById("next");
+
+        // if nextBtn is not found, return
+        if (!nextBtn) return;
+
+        clearInterval(interval);
+
+        // change sign in name label and input placeholder text
+        const signInLabel = document.querySelector('label[for="signInName"]');
+        const signInInput = document.getElementById("signInName");
+
+        if (signInLabel) {
+          signInLabel.innerHTML = "Username";
+        } else {
+          console.log("Sign in label not found");
+        }
+
+        if (signInInput) {
+          signInInput.placeholder = "Enter your username";
+        } else {
+          console.log("Sign in input not found");
+        }
+
+        const targetNode = document.getElementsByClassName("working")[0];
+
+        if (targetNode && nextBtn) {
+          // Options for the observer (which mutations to observe)
+          const config = { attributes: true, attributeFilter: ["style"] };
+
+          // Callback function to execute when mutations are observed
+          const callback = (mutationList, observer) => {
+            // Add a loader class or anything you'd like to do.
+            if (targetNode.style.display == "block") {
+              nextBtn.classList.add("loader");
+              nextBtn.innerHTML = "Loading...";
+            } else {
+              nextBtn.classList.remove("loader");
+              nextBtn.innerHTML = "Sign In";
+            }
+          };
+
+          // Create an observer instance linked to the callback function
+          const observer = new MutationObserver(callback);
+
+          // Start observing the target node for configured mutations
+          observer.observe(targetNode, config);
+        }
+      }, 100);
+
+      // Inject forgot password link
+      const params = new URLSearchParams(window.location.search);
+      const link = params.get("forgotPasswordLink");
+
+      // Display the forgot password link if it exists
+      if (link) {
+        const forgotPasswordContainer = document.getElementById(
+          "forgot-password-container"
+        );
+        forgotPasswordContainer.innerHTML = `<a href="${queryParams.forgotPasswordLink}" target="_blank">Forgot Password?</a>`;
+      }
+    </script>
   </head>
   <body>
     <main>
       <div class="aside">
         <div class="logo-container">
           <img
-            src="https://sandeeppanjalaneudesic.github.io/nethealth/nethealth-logo-white.svg"
+            src="https://lescorp4storage.blob.core.windows.net/web/nethealth-logo-white.svg"
             alt="NetHealth Logo"
           />
           <img
-            src="https://sandeeppanjalaneudesic.github.io/nethealth/therapy-logo.png"
+            src="https://lescorp4storage.blob.core.windows.net/web/therapy-logo.png"
             alt="Therapy Logo"
           />
         </div>
@@ -213,34 +291,34 @@
           <button size="medium" themeColor="light" fillMode="solid">
             HOW-TO SITE
             <img
-              src="https://sandeeppanjalaneudesic.github.io/nethealth/link-out.svg"
+              src="https://lescorp4storage.blob.core.windows.net/web/link-out.svg"
               alt="External Link"
             />
           </button>
           <button size="medium" themeColor="light" fillMode="solid">
             NET HEALTH SITE
             <img
-              src="https://sandeeppanjalaneudesic.github.io/nethealth/link-out.svg"
+              src="https://lescorp4storage.blob.core.windows.net/web/link-out.svg"
               alt="External Link"
             />
           </button>
           <button size="medium" themeColor="light" fillMode="solid">
             ONLINE ASSISTANCE
             <img
-              src="https://sandeeppanjalaneudesic.github.io/nethealth/link-out.svg"
+              src="https://lescorp4storage.blob.core.windows.net/web/link-out.svg"
               alt="External Link"
             />
           </button>
           <button size="medium" themeColor="light" fillMode="solid">
             <img
-              src="https://sandeeppanjalaneudesic.github.io/nethealth/email.svg"
+              src="https://lescorp4storage.blob.core.windows.net/web/email.svg"
               alt="Email"
             />
             CONTACT SUPPORT
           </button>
           <button size="medium" themeColor="light" fillMode="solid">
             <img
-              src="https://sandeeppanjalaneudesic.github.io/nethealth/email.svg"
+              src="https://lescorp4storage.blob.core.windows.net/web/email.svg"
               alt="Email"
             />
             CONTACT SALES
@@ -251,37 +329,9 @@
         <div class="login-content">
           <h3>Log in to Therapy Tree</h3>
           <div id="api"></div>
+          <div id="forgot-password-container"></div>
         </div>
       </div>
     </main>
-
-    <script defer>
-      const targetNode = document.getElementsByClassName("working")[0];
-      // Sign in button in unified page.
-      const nextBtn = document.getElementById("next");
-
-      if (targetNode && nextBtn) {
-        // Options for the observer (which mutations to observe)
-        const config = { attributes: true, attributeFilter: ["style"] };
-
-        // Callback function to execute when mutations are observed
-        const callback = (mutationList, observer) => {
-          // Add a loader class or anything you'd like to do.
-          if (targetNode.style.display == "block") {
-            nextBtn.classList.add("loader");
-            nextBtn.innerHTML = "Loading...";
-          } else {
-            nextBtn.classList.remove("loader");
-            nextBtn.innerHTML = "Sign In";
-          }
-        };
-
-        // Create an observer instance linked to the callback function
-        const observer = new MutationObserver(callback);
-
-        // Start observing the target node for configured mutations
-        observer.observe(targetNode, config);
-      }
-    </script>
   </body>
 </html>
