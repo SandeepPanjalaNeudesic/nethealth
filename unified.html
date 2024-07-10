@@ -209,6 +209,23 @@
     </style>
 
     <script>
+      const injectLinkInterval = setInterval(() => {
+        const nextBtn = document.getElementById("next");
+        if (!nextBtn) return;
+        // Inject forgot password link
+        const searchParams = new URLSearchParams(window.location.search);
+        const forgotPasswordLink = searchParams.get("forgotPasswordLink");
+        console.log(forgotPasswordLink);
+        // Display the forgot password link if it exists
+        if (forgotPasswordLink) {
+          const forgotPasswordContainer = document.getElementById(
+            "forgot-password-container"
+          );
+          forgotPasswordContainer.innerHTML = `<a href="${forgotPasswordLink}" target="_blank">Forgot Password?</a>`;
+          clearInterval(injectLinkInterval);
+        }
+      }, 100);
+
       // try to get element by id, if it does not exist repeat every 100ms
       const interval = setInterval(() => {
         // Sign in button in unified page.
@@ -260,18 +277,6 @@
           observer.observe(targetNode, config);
         }
       }, 100);
-
-      // Inject forgot password link
-      const searchParams = new URLSearchParams(window.location.search);
-      const forgotPasswordLink = searchParams.get("forgotPasswordLink");
-
-      // Display the forgot password link if it exists
-      if (forgotPasswordLink) {
-        const forgotPasswordContainer = document.getElementById(
-          "forgot-password-container"
-        );
-        forgotPasswordContainer.innerHTML = `<a href="${forgotPasswordLink}" target="_blank">Forgot Password?</a>`;
-      }
     </script>
   </head>
   <body>
