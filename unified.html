@@ -262,15 +262,15 @@
       }, 100);
 
       // Inject forgot password link
-      const params = new URLSearchParams(window.location.search);
-      const link = params.get("forgotPasswordLink");
+      const searchParams = new URLSearchParams(window.location.search);
+      const forgotPasswordLink = searchParams.get("forgotPasswordLink");
 
       // Display the forgot password link if it exists
-      if (link) {
+      if (forgotPasswordLink) {
         const forgotPasswordContainer = document.getElementById(
           "forgot-password-container"
         );
-        forgotPasswordContainer.innerHTML = `<a href="${link}" target="_blank">Forgot Password?</a>`;
+        forgotPasswordContainer.innerHTML = `<a href="${forgotPasswordLink}" target="_blank">Forgot Password?</a>`;
       }
     </script>
   </head>
